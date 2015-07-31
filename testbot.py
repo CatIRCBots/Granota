@@ -28,11 +28,11 @@ def send(msg):
 time.sleep(2)
 send("NICK GranoTest")
 send("USER GranoTest * * :Granota testing bot")
-time.sleep(5.5)
+time.sleep(6)
 send("JOIN #catbots-bots")
-send("PRIVMSG #catbots-bots :Granota testing script has started.")
 time.sleep(0.5)
 print "Granota testing script has started.\n"
+send("PRIVMSG #catbots-bots :Granota testing script has started.")
 
 print "Testing: Core\n"
 send("PRIVMSG #catbots-bots :Testing: Core")
@@ -113,8 +113,6 @@ for val in os.listdir("willie/modules"):
 			notworking.append("module {0}".format(val))
 
 print "\nThe tests have been done successfully.\n"
-
-time.sleep(0.5)
 
 print "============================= test results =============================="
 send("PRIVMSG #catbots-bots :============================= test results ==============================")
