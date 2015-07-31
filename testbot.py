@@ -35,7 +35,7 @@ print "Granota testing script has started.\n"
 send("PRIVMSG #catbots-bots :Granota testing script has started.")
 
 print "Testing: Core\n"
-send("PRIVMSG #catbots-bots :Testing: Core")
+send("PRIVMSG #catbots-bots :\x0307Testing\x0F: Core")
 
 print "Testing: willie.__init__"
 try:
@@ -88,7 +88,7 @@ except:
 	criticalnotworking.append("willie.tools")
 
 print "\nTesting: granota.py"
-send("PRIVMSG #catbots-bots :Testing: granota.py")
+send("PRIVMSG #catbots-bots :\x0307Testing\x0F: granota.py")
 testgra = pytest.main(["granota.py", "-s", '--tb', 'native'])
 
 if testgra is 0:
@@ -100,7 +100,7 @@ else:
 	criticalnotworking.append("granota.py")
 
 print "Testing: Modules\n" 
-send("PRIVMSG #catbots-bots :Testing: Modules")
+send("PRIVMSG #catbots-bots :\x0307Testing\x0F: Modules")
 
 for val in os.listdir("willie/modules"):
 	if val.find("__init__") == -1 and val.find(".pyc") == -1 and val.find("__pycache__") == -1:
@@ -115,7 +115,7 @@ for val in os.listdir("willie/modules"):
 print "\nThe tests have been done successfully.\n"
 
 print "============================= test results =============================="
-send("PRIVMSG #catbots-bots :============================= test results ==============================")
+send("PRIVMSG #catbots-bots :============================= \x0305test results\x0F ==============================")
 workingnum = len(working)
 notworkingnum = len(notworking)
 criticalnotworkingnum = len(criticalnotworking)
@@ -139,27 +139,27 @@ print "Tests made: {0}".format(alltestsmade)
 send("PRIVMSG #catbots-bots :Tests made: {0}".format(alltestsmade))
 print "Working: {0}{1} in total".format(workingvals, workingnum)
 if workingircvals2 is not "": 
-	send("PRIVMSG #catbots-bots :\x03,09WORKING\x0F: {0}".format(workingircvals1))
+	send("PRIVMSG #catbots-bots :\x0309WORKING\x0F: {0}".format(workingircvals1))
 	send("PRIVMSG #catbots-bots :{0}{1} in total".format(workingircvals2, workingnum))
 else: # wat?
-	send("PRIVMSG #catbots-bots :\x03,09WORKING\x0F: {0}{1} in total".format(workingircvals1, workingnum))
+	send("PRIVMSG #catbots-bots :\x0309WORKING\x0F: {0}{1} in total".format(workingircvals1, workingnum))
 print "Not working: {0}{1} in total".format(notworkingvals, notworkingnum)
-send("PRIVMSG #catbots-bots :\x03,04FAILING\x0F: {0}{1} in total".format(notworkingvals, notworkingnum))
+send("PRIVMSG #catbots-bots :\x0304FAILING\x0F: {0}{1} in total".format(notworkingvals, notworkingnum))
 print "CRITICAL not working: {0}{1} in total".format(criticalnotworkingvals, criticalnotworkingnum)
-send("PRIVMSG #catbots-bots :\x02\x03,04CRITICALLY FAILING\x0F: {0}{1} in total".format(criticalnotworkingvals, criticalnotworkingnum))
+send("PRIVMSG #catbots-bots :\x02\x0304CRITICALLY FAILING\x0F: {0}{1} in total".format(criticalnotworkingvals, criticalnotworkingnum))
 if criticalnotworkingnum is 0 and notworkingnum is not 0:
 	print "The build has passed, but there are failing stuff that should get fixed."
-	send("PRIVMSG #catbots-bots :The build has passed, but there are \x03,04failing\x0F stuff that should get fixed.")
+	send("PRIVMSG #catbots-bots :The build has passed, but there are \x0304failing\x0F stuff that should get fixed.")
 elif criticalnotworkingnum is 0 and notworkingnum is 0:
 	print "The build has passed with no problems."
-	send("PRIVMSG #catbots-bots :The build has \x03,09passed\x0F with no problems.")
+	send("PRIVMSG #catbots-bots :The build has \x0309passed\x0F with no problems.")
 else:
 	print "The build has failed."
-	send("PRIVMSG #catbots-bots :The build has \x02\x03,04failed\x0F.")
+	send("PRIVMSG #catbots-bots :The build has \x02\x0304failed\x0F.")
 send("PRIVMSG #catbots-bots :For more information please visit https://travis-ci.org/CatIRCBots/Granota")
 print "============================= test results =============================="
-send("PRIVMSG #catbots-bots :============================= test results ==============================")
-send("QUIT :My job here, is done!")
+send("PRIVMSG #catbots-bots :============================= \x0305test results\x0F ==============================")
+send("QUIT :\x0302My job here, is done!\x0F")
 time.sleep(0.3)
 if criticalnotworkingnum is 0:
 	sys.exit(0)
