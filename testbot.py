@@ -139,23 +139,23 @@ print "Tests made: {0}".format(alltestsmade)
 send("PRIVMSG #catbots-bots :Tests made: {0}".format(alltestsmade))
 print "Working: {0}{1} in total".format(workingvals, workingnum)
 if workingircvals2 is not "": 
-	send("PRIVMSG #catbots-bots :Working: {0}".format(workingircvals1))
+	send("PRIVMSG #catbots-bots :\x03,09WORKING\x0F: {0}".format(workingircvals1))
 	send("PRIVMSG #catbots-bots :{0}{1} in total".format(workingircvals2, workingnum))
 else: # wat?
-	send("PRIVMSG #catbots-bots :Working: {0}{1} in total".format(workingircvals1, workingnum))
+	send("PRIVMSG #catbots-bots :\x03,09WORKING\x0F: {0}{1} in total".format(workingircvals1, workingnum))
 print "Not working: {0}{1} in total".format(notworkingvals, notworkingnum)
-send("PRIVMSG #catbots-bots :Not working: {0}{1} in total".format(notworkingvals, notworkingnum))
+send("PRIVMSG #catbots-bots :\x03,04FAILING\x0F: {0}{1} in total".format(notworkingvals, notworkingnum))
 print "CRITICAL not working: {0}{1} in total".format(criticalnotworkingvals, criticalnotworkingnum)
-send("PRIVMSG #catbots-bots :CRITICAL not working: {0}{1} in total".format(criticalnotworkingvals, criticalnotworkingnum))
+send("PRIVMSG #catbots-bots :\x02\x03,04CRITICALLY FAILING\x0F: {0}{1} in total".format(criticalnotworkingvals, criticalnotworkingnum))
 if criticalnotworkingnum is 0 and notworkingnum is not 0:
-	print "The build has passed, but there are not working stuff that should get fixed."
-	send("PRIVMSG #catbots-bots :The build has passed, but there are not working stuff that should get fixed.")
+	print "The build has passed, but there are failing stuff that should get fixed."
+	send("PRIVMSG #catbots-bots :The build has passed, but there are \x03,04failing\x0F stuff that should get fixed.")
 elif criticalnotworkingnum is 0 and notworkingnum is 0:
 	print "The build has passed with no problems."
-	send("PRIVMSG #catbots-bots :The build has passed with no problems.")
+	send("PRIVMSG #catbots-bots :The build has \x03,09passed\x0F with no problems.")
 else:
 	print "The build has failed."
-	send("PRIVMSG #catbots-bots :The build has failed.")
+	send("PRIVMSG #catbots-bots :The build has \x02\x03,04failed\x0F.")
 send("PRIVMSG #catbots-bots :For more information please visit https://travis-ci.org/CatIRCBots/Granota")
 print "============================= test results =============================="
 send("PRIVMSG #catbots-bots :============================= test results ==============================")
