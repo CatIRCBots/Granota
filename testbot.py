@@ -17,9 +17,9 @@ working = []
 notworking = []
 criticalnotworking = []
 
-print "Granota testing script\n"
+print "\e[1;37mGranota testing script\e[0m\n"
 
-print "Connecting to IRC..."
+print "\e[0;37mConnecting to IRC...\e[0m"
 irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 irc.connect(("irc.lizardirc.org", 6667))
 def send(msg):
@@ -31,91 +31,92 @@ send("USER GranoTest * * :Granota testing bot")
 time.sleep(6)
 send("JOIN #catbots-bots")
 time.sleep(0.5)
-print "Granota testing script has started.\n"
-send("PRIVMSG #catbots-bots :Granota testing script has started.")
+print "\e[1;36mGranota testing script has started.\e[0m\n"
+send("PRIVMSG #catbots-bots :\x0311Granota testing script has started.\x0F")
 
-print "Testing: Core\n"
-send("PRIVMSG #catbots-bots :\x0307Testing\x0F: Core")
+print "\e[1;33mTesting\e[0m: Core\n"
+send("PRIVMSG #catbots-bots :\x0308Testing\x0F: Core")
 
-print "Testing: willie.__init__"
+print "\e[1;33mTesting\e[0m: willie.__init__"
 try:
 	import willie.__init__
-	print "WORKED: willie.__init__\n"
+	print "\e[1;32mWORKING\e[0m: willie.__init__\n"
 	working.append("willie.__init__")
 except:
-	print "FAILED: willie.__init__\n"
+	print "\e[0;31mFAILING\e[0m: willie.__init__\n"
 	notworking.append("willie.__init__")
 	criticalnotworking.append("willie.__init__")
 
-print "Testing: willie.bot"
+print "\e[1;33mTesting\e[0m: willie.bot"
 try:
 	import willie.bot
-	print "WORKED: willie.bot\n"
+	print "\e[1;32mWORKING\e[0m: willie.bot\n"
 	working.append("willie.bot")
 except:
-	print "FAILED: willie.bot\n"
+	print "\e[0;31mFAILING\e[0m: willie.bot\n"
 	notworking.append("willie.bot")
 	criticalnotworking.append("willie.bot")
 
-print "Testing: willie.config"
+print "\e[1;33mTesting\e[0m: willie.config"
 try:
 	import willie.config
-	print "WORKED: willie.config\n"
+	print "\e[1;32mWORKING\e[0m: willie.config\n"
 	working.append("willie.config")
 except:
-	print "FAILED: willie.config\n"
+	print "\e[0;31mFAILING\e[0m: willie.config\n"
 	notworking.append("willie.config")
 	criticalnotworking.append("willie.config")
 
-print "Testing: willie.irc"
+print "\e[1;33mTesting\e[0m: willie.irc"
 try:
 	import willie.irc
-	print "WORKED: willie.irc\n"
+	print "\e[1;32mWORKING\e[0m: willie.irc\n"
 	working.append("willie.irc")
 except:
-	print "FAILED: willie.irc\n"
+	print "\e[0;31mFAILING\e[0m: willie.irc\n"
 	notworking.append("willie.bot")
 	criticalnotworking.append("willie.bot")
 
-print "Testing: willie.tools"
+print "\e[1;33mTesting\e[0m: willie.tools"
 try:
 	import willie.tools
-	print "WORKED: willie.tools\n"
+	print "\e[1;32mWORKING\e[0m: willie.tools\n"
 	working.append("willie.tools")
 except:
-	print "FAILED: willie.tools\n"
+	print "\e[0;31mFAILING\e[0m: willie.tools\n"
 	notworking.append("willie.tools")
 	criticalnotworking.append("willie.tools")
 
-print "\nTesting: granota.py"
-send("PRIVMSG #catbots-bots :\x0307Testing\x0F: granota.py")
+print "\n\e[1;33mTesting\e[0m: granota.py"
+send("PRIVMSG #catbots-bots :\x0308Testing\x0F: granota.py")
 testgra = pytest.main(["granota.py", "-s", '--tb', 'native'])
 
 if testgra is 0:
-	print "WORKED: granota.py\n"
+	print "\e[1;32mWORKING\e[0m: granota.py\n"
 	working.append("granota.py")
 else:
-	print "FAILED: granota.py\n"
+	print "\e[0;31mFAILING\e[0m: granota.py\n"
 	notworking.append("granota.py")
 	criticalnotworking.append("granota.py")
 
-print "Testing: Modules\n" 
-send("PRIVMSG #catbots-bots :\x0307Testing\x0F: Modules")
+print "\e[1;33mTesting\e[0m: Modules\n" 
+send("PRIVMSG #catbots-bots :\x0308Testing\x0F: Modules")
 
 for val in os.listdir("willie/modules"):
 	if val.find("__init__") == -1 and val.find(".pyc") == -1 and val.find("__pycache__") == -1:
+		print "\e[1;33mTesting\e[0m: Module {0}".format(val)
 		testmod = pytest.main(["willie/modules/{0}".format(val), "-s", '--tb', 'native'])
 		if testmod is 0:
-			print "WORKED: Module {0}".format(val)
+			print "\e[1;32mWORKING\e[0m: Module {0}".format(val)
 			working.append("module {0}".format(val))
 		else:
-			print "FAILED: Module {0}".format(val)
+			print "\e[0;31mFAILING\e[0m: Module {0}".format(val)
 			notworking.append("module {0}".format(val))
 
 print "\nThe tests have been done successfully.\n"
 
-print "============================= test results =============================="
-send("PRIVMSG #catbots-bots :============================= \x0310test results\x0F ==============================")
+print "============================= \e[1;35mmtest results\e[0m =============================="
+send("PRIVMSG #catbots-bots :============================= \x0313test results\x0F ==============================")
 workingnum = len(working)
 notworkingnum = len(notworking)
 criticalnotworkingnum = len(criticalnotworking)
@@ -137,28 +138,28 @@ for val in criticalnotworking:
 	criticalnotworkingvals = criticalnotworkingvals + val + ", "
 print "Tests made: {0}".format(alltestsmade)
 send("PRIVMSG #catbots-bots :Tests made: {0}".format(alltestsmade))
-print "Working: {0}{1} in total".format(workingvals, workingnum)
+print "\e[1;32mWORKING\e[0m: {0}{1} in total".format(workingvals, workingnum)
 if workingircvals2 is not "": 
 	send("PRIVMSG #catbots-bots :\x0309WORKING\x0F: {0}".format(workingircvals1))
 	send("PRIVMSG #catbots-bots :{0}{1} in total".format(workingircvals2, workingnum))
 else: # wat?
 	send("PRIVMSG #catbots-bots :\x0309WORKING\x0F: {0}{1} in total".format(workingircvals1, workingnum))
-print "Not working: {0}{1} in total".format(notworkingvals, notworkingnum)
+print "\e[0;31mFAILING\e[0m: {0}{1} in total".format(notworkingvals, notworkingnum)
 send("PRIVMSG #catbots-bots :\x0304FAILING\x0F: {0}{1} in total".format(notworkingvals, notworkingnum))
-print "CRITICAL not working: {0}{1} in total".format(criticalnotworkingvals, criticalnotworkingnum)
+print "\e[0;31mCRITICALLY FAILING\e[0m: {0}{1} in total".format(criticalnotworkingvals, criticalnotworkingnum)
 send("PRIVMSG #catbots-bots :\x02\x0304CRITICALLY FAILING\x0F: {0}{1} in total".format(criticalnotworkingvals, criticalnotworkingnum))
 if criticalnotworkingnum is 0 and notworkingnum is not 0:
-	print "The build has passed, but there are failing stuff that should get fixed."
+	print "The build has \e[1;32mpassed\e[0m, but there are \e[0;31mfailing\e[0m stuff that should get fixed."
 	send("PRIVMSG #catbots-bots :The build has \x0309passed\x0F, but there are \x0304failing\x0F stuff that should get fixed.")
 elif criticalnotworkingnum is 0 and notworkingnum is 0:
-	print "The build has passed with no problems."
+	print "The build has \e[1;32mpassed\e[0m with no problems."
 	send("PRIVMSG #catbots-bots :The build has \x0309passed\x0F with no problems.")
 else:
-	print "The build has failed."
+	print "The build has \e[0;31mfailed\e[0m."
 	send("PRIVMSG #catbots-bots :The build has \x02\x0304failed\x0F.")
 send("PRIVMSG #catbots-bots :For more information please visit https://travis-ci.org/CatIRCBots/Granota")
-print "============================= test results =============================="
-send("PRIVMSG #catbots-bots :============================= \x0310test results\x0F ==============================")
+print "============================= \e[1;35mmtest results\e[0m =============================="
+send("PRIVMSG #catbots-bots :============================= \x0313test results\x0F ==============================")
 send("QUIT :\x0302My job here, is done!\x0F")
 time.sleep(0.3)
 if criticalnotworkingnum is 0:
