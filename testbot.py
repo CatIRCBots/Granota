@@ -115,7 +115,7 @@ for val in os.listdir("willie/modules"):
 print "\nThe tests have been done successfully.\n"
 
 print "============================= test results =============================="
-send("PRIVMSG #catbots-bots :============================= \x0305test results\x0F ==============================")
+send("PRIVMSG #catbots-bots :============================= \x0310test results\x0F ==============================")
 workingnum = len(working)
 notworkingnum = len(notworking)
 criticalnotworkingnum = len(criticalnotworking)
@@ -149,7 +149,7 @@ print "CRITICAL not working: {0}{1} in total".format(criticalnotworkingvals, cri
 send("PRIVMSG #catbots-bots :\x02\x0304CRITICALLY FAILING\x0F: {0}{1} in total".format(criticalnotworkingvals, criticalnotworkingnum))
 if criticalnotworkingnum is 0 and notworkingnum is not 0:
 	print "The build has passed, but there are failing stuff that should get fixed."
-	send("PRIVMSG #catbots-bots :The build has passed, but there are \x0304failing\x0F stuff that should get fixed.")
+	send("PRIVMSG #catbots-bots :The build has \x0309passed\x0F, but there are \x0304failing\x0F stuff that should get fixed.")
 elif criticalnotworkingnum is 0 and notworkingnum is 0:
 	print "The build has passed with no problems."
 	send("PRIVMSG #catbots-bots :The build has \x0309passed\x0F with no problems.")
@@ -158,7 +158,7 @@ else:
 	send("PRIVMSG #catbots-bots :The build has \x02\x0304failed\x0F.")
 send("PRIVMSG #catbots-bots :For more information please visit https://travis-ci.org/CatIRCBots/Granota")
 print "============================= test results =============================="
-send("PRIVMSG #catbots-bots :============================= \x0305test results\x0F ==============================")
+send("PRIVMSG #catbots-bots :============================= \x0310test results\x0F ==============================")
 send("QUIT :\x0302My job here, is done!\x0F")
 time.sleep(0.3)
 if criticalnotworkingnum is 0:
