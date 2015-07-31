@@ -32,9 +32,10 @@ time.sleep(5.5)
 send("JOIN #catbots-bots")
 send("PRIVMSG #catbots-bots :Granota testing script has started.")
 time.sleep(0.5)
-print "Done, starting tests.\n"
+print "Granota testing script has started.\n"
 
 print "Testing: Core\n"
+send("PRIVMSG #catbots-bots :Testing: Core")
 
 print "Testing: willie.__init__"
 try:
@@ -87,6 +88,7 @@ except:
 	criticalnotworking.append("willie.tools")
 
 print "\nTesting: granota.py"
+send("PRIVMSG #catbots-bots :Testing: granota.py")
 testgra = pytest.main(["granota.py", "-s", '--tb', 'native'])
 
 if testgra is 0:
@@ -97,7 +99,8 @@ else:
 	notworking.append("granota.py")
 	criticalnotworking.append("granota.py")
 
-print "SECONDARY TEST: Modules\n" 
+print "Testing: Modules\n" 
+send("PRIVMSG #catbots-bots :Testing: Modules")
 
 for val in os.listdir("willie/modules"):
 	if val.find("__init__") == -1 and val.find(".pyc") == -1 and val.find("__pycache__") == -1:
