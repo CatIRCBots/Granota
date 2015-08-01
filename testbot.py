@@ -161,7 +161,7 @@ send("PRIVMSG #catbots-bots :For more information please visit https://travis-ci
 print "============================= test results =============================="
 send("PRIVMSG #catbots-bots :============================= \x0313test results\x0F ==============================")
 send("QUIT :\x0302My job here, is done!\x0F")
-time.sleep(0.3)
+time.sleep(0.5)
 if criticalnotworkingnum is 0:
 	sys.exit(0)
 else:
