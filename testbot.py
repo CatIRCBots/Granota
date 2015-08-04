@@ -66,6 +66,36 @@ except:
 	print "FAILING: willie.config\n"
 	notworking.append("willie.config")
 	criticalnotworking.append("willie.config")
+	
+print "Testing: willie.coretasks"
+try:
+	import willie.coretasks
+	print "WORKING: willie.coretasks\n"
+	working.append("willie.coretasks")
+except:
+	print "FAILING: willie.coretasks\n"
+	notworking.append("willie.coretasks")
+	criticalnotworking.append("willie.coretasks")
+
+print "Testing: willie.db"
+try:
+	import willie.db
+	print "WORKING: willie.db\n"
+	working.append("willie.db")
+except:
+	print "FAILING: willie.db\n"
+	notworking.append("willie.db")
+	criticalnotworking.append("willie.db")
+	
+print "Testing: willie.icao"
+try:
+	import willie.icao
+	print "WORKING: willie.icao\n"
+	working.append("willie.icao")
+except:
+	print "FAILING: willie.icao\n"
+	notworking.append("willie.icao")
+	criticalnotworking.append("willie.icao")
 
 print "Testing: willie.irc"
 try:
@@ -76,6 +106,26 @@ except:
 	print "FAILING: willie.irc\n"
 	notworking.append("willie.bot")
 	criticalnotworking.append("willie.bot")
+	
+print "Testing: willie.module"
+try:
+	import willie.module
+	print "WORKING: willie.module\n"
+	working.append("willie.module")
+except:
+	print "FAILING: willie.module\n"
+	notworking.append("willie.module")
+	criticalnotworking.append("willie.module")
+	
+print "Testing: willie.test_tools"
+try:
+	import willie.test_tools
+	print "WORKING: willie.test_tools\n"
+	working.append("willie.test_tools")
+except:
+	print "FAILING: willie.test_tools\n"
+	notworking.append("willie.test_tools")
+	criticalnotworking.append("willie.test_tools")
 
 print "Testing: willie.tools"
 try:
@@ -86,6 +136,16 @@ except:
 	print "FAILING: willie.tools\n"
 	notworking.append("willie.tools")
 	criticalnotworking.append("willie.tools")
+	
+print "Testing: willie.web"
+try:
+	import willie.web
+	print "WORKING: willie.web\n"
+	working.append("willie.web")
+except:
+	print "FAILING: willie.web\n"
+	notworking.append("willie.web")
+	criticalnotworking.append("willie.web")
 
 print "\nTesting: granota.py"
 send("PRIVMSG #catbots-bots :\x0308Testing\x0F: granota.py")
