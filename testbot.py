@@ -184,11 +184,14 @@ alltestsmade = workingnum + notworkingnum + criticalnotworkingnum
 workingvals = ""
 workingircvals1 = "" # due to the lengh is too long, we do this
 workingircvals2 = "" # ^
+workingircvals3 = "" # ^^
 notworkingvals = ""
 criticalnotworkingvals = ""
 for val in working:
 	workingvals = workingvals + val + ", "
-	if len(workingircvals1) > 400: ## just an protection
+	if len(workingircvals2) > 400: ## just an protection
+		workingircvals3 = workingircvals3 + val + ", "
+	elif len(workingircvals1) > 400:
 		workingircvals2 = workingircvals2 + val + ", "
 	else:
 		workingircvals1 = workingircvals1 + val + ", "
@@ -199,7 +202,11 @@ for val in criticalnotworking:
 print "Tests made: {0}".format(alltestsmade)
 send("PRIVMSG #catbots-bots :Tests made: {0}".format(alltestsmade))
 print "WORKING: {0}{1} in total".format(workingvals, workingnum)
-if workingircvals2 is not "": 
+if workingircvals3 is not "": 
+	send("PRIVMSG #catbots-bots :\x0309WORKING\x0F: {0}".format(workingircvals1))
+	send("PRIVMSG #catbots-bots :{0}".format(workingircvals2))
+	send("PRIVMSG #catbots-bots :{0}{1} in total".format(workingircvals3, workingnum))
+elif workingircvals2 is not "": 
 	send("PRIVMSG #catbots-bots :\x0309WORKING\x0F: {0}".format(workingircvals1))
 	send("PRIVMSG #catbots-bots :{0}{1} in total".format(workingircvals2, workingnum))
 else: # wat?
