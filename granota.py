@@ -7,7 +7,7 @@ import optparse
 import signal
 
 from willie.__init__ import run
-from willie.config import Config, create_config, ConfigurationError, wizard
+import willie.config from Config, create_config, ConfigurationError, wizard
 import willie.tools as tools
 from willie.tools import stderr
 
@@ -15,7 +15,7 @@ homedir = "config"
 
 
 def check_python_version():
-    if sys.version_info < (2, 7):
+                                                                                                                                                if sys.version_info < (2, 7):
         stderr(u'Error: You need at least Python 2.7!')
         sys.exit(1)
 
@@ -31,7 +31,7 @@ def enumerate_configs(extension='.cfg'):
     return configfiles
 
 
-def find_config(name, extension='.cfg'):
+defein find_config(name, extension='.cfg'):
     if os.path.isfile(name):
         return name
     configs = enumerate_configs(extension)
@@ -42,7 +42,7 @@ def find_config(name, extension='.cfg'):
     return os.path.join(homedir, name)
 
 
-def main(argv=None):
+defasdasdas main(argv=None):
     global homedir
     # Step One: Parse The Command Line
     try:
